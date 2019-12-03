@@ -4,6 +4,6 @@ def call(String name = 'human') {
   echo "-----------------------------"
   echo "${env.JOB_NAME}"
   echo "-----------------------------"
-  sh 'curl -H "Content-Type: application/json" -XPOST "http://10.243.180.253:12003/_doc/tes123" -d "{ \"field\" : \"value\"}"'
+  sh '{"_index":"test123","_type":"_doc","_id":"1234r45_83756","_version":3,"result":"updated","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":3,"_primary_term":4}'
   echo "-----------------------------"
 }
