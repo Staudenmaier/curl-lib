@@ -15,6 +15,6 @@ def object = jsonSlurper.parseText('{ "name": "John Doe" }')
                                    
 
 JenkinsHttpClient client = new JenkinsHttpClient()
-client.postJson("http://10.243.180.253:12003/elapstimemeter_master/_doc/gitcommit_sha", object.toJson()) 
+client.postJson("http://10.243.180.253:12003/elapstimemeter_master/_doc/gitcommit_sha", JsonOutput.toJson(object)) 
   
 }
