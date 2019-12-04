@@ -20,7 +20,7 @@ class JsonHelper {
  
     def json_str = JsonOutput.toJson(data)
     def json_beauty = JsonOutput.prettyPrint(json_str)
-    File file = new File(p+"/"+filename)
+    File file = new File(path+"/"+filename)
     file.write(json_beauty)
   }
 }
