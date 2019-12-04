@@ -10,12 +10,13 @@ import groovy.json.JsonOutput
 import com.elektrobit.JenkinsHttpClient
 
 def call(String name = 'klaus') {
-  
-def jsonSlurper = new JsonSlurper()
-def object = jsonSlurper.parseText('{ "name": "John Doe" }')
+  println ("Hallo " + ${WORKSPACE})
+
+  def jsonSlurper = new JsonSlurper()
+  def object = jsonSlurper.parseText('{ "name": "John Doe" }')
                                    
 
-JenkinsHttpClient client = new JenkinsHttpClient()
-client.postJson("http://10.243.180.253:12003/elapstimemeter_master/_doc/gitcommit_sha", JsonOutput.toJson(object)) 
+  JenkinsHttpClient client = new JenkinsHttpClient()
+  client.postJson("http://10.243.180.253:12003/elapstimemeter_master/_doc/gitcommit_sha", JsonOutput.toJson(object)) 
   
 }
