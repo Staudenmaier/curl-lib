@@ -1,7 +1,7 @@
 package com.elektrobit
 import groovy.json.JsonOutput
  
-@NonCPS
+
 class JsonHelper {
   private String path = ''
 
@@ -23,5 +23,8 @@ class JsonHelper {
     def json_beauty = JsonOutput.prettyPrint(json_str)
     File file = new File(path+"/"+filename)
     file.write(json_beauty)
+    data = null
+   
+   
   }
 }
