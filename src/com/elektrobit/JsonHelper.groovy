@@ -5,7 +5,8 @@ class JsonHelper {
   private String path = ''
 
   JsonHelper(String p) {
-  path = p
+    path = p
+  }
 
   def createJSON(String filename) {
 
