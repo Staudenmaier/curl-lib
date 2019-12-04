@@ -23,7 +23,7 @@ def call(String name = '/generatedFile.txt') {
   helper.createJSON(name)
     
   echo "----------------25------------- "
-  //def jsonSlurper = new JsonSlurper()
+  def jsonSlurper = new JsonSlurper()
   //json = jsonSlurper.parse(new File("${env.WORKSPACE}/${name}"))
                           
   echo "-----------------26------------ "
