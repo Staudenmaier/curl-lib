@@ -24,7 +24,7 @@ def call(String name = 'klaus') {
   	//headers.'Authorization' = ""
   	headers.'User-Agent' = 'Logstash'
   	headers.Accept = 'application/json'
-
+/*
   	response.success = { resp, json ->
     		println "GitHub updated successfully! ${resp.status}"
   	}
@@ -32,6 +32,7 @@ def call(String name = 'klaus') {
   	response.failure = { resp, json ->
     		println "GitHub update Failure! ${resp.status} " + json.message
   	}
+*/
   }
 	
 }
