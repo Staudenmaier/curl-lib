@@ -19,7 +19,7 @@ def call(String name = '/generatedFile.txt') {
   echo "${env.WORKSPACE}/name"
   echo "----------------------------- "
   
-  JsonHelper helper = new JsonHelper(${env.WORKSPACE})
+  JsonHelper helper = new JsonHelper(env.WORKSPACE)
   helper.createJSON(name)
     
   echo "----------------25------------- "
