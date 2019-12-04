@@ -1,22 +1,21 @@
 #!/usr/bin/env groovy
+import groovyx.net.http.ContentType
+
 def call(String name = 'klaus') {
   echo "Hello, ${name}."
   echo "-----------------------------"
   echo "${env.JOB_NAME}"
   echo "-----------------------------"
-  sh 'curl -XPUT "http://localhost:9200/elapstimemeter_master/_doc/gitcommit_sha" -H "Content-Type: application/json" -d\'
-	{
-	"Buildstatus"  : "success",
-	"BuildDuration": 12345,
-	"artifact_size": 90000,
-	"SpawnDocker": [{
-			"Containtername\": "Container A",
-			"spawntime": 60
-		},
-		{
-			"Containtername": "Container B",
-			"spawntime": 6
-		}
-		]
-	}\''
+  uri.path = 'http://example.com/handler.php'
+    body = [name: 'bob', title: 'construction worker']
+    requestContentType = ContentType.JSON
+
+    response.success = { resp ->
+        println "Success! ${resp.status}"
+    }
+
+    response.failure = { resp ->
+        println "Request failed with status ${resp.status}"
+    }
+	
 }
