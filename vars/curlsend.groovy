@@ -13,14 +13,16 @@ def call(String name = 'klaus') {
   echo "Hello, ${name}."
   echo "-----------------------------"
   echo "${env.JOB_NAME}"
-  echo "${env.WORKSPACE}"
-  echo "-----------------------------"
+  echo "${env.GIT_COMMIT}"
+  echo "${env.GIT_COMMIT}"
+  echo "----------------------------- "
+  echo printenv
   
   def jsonSlurper = new JsonSlurper()
   def object = jsonSlurper.parseText('{ "name": "John Doe" }')
                                    
 
   JenkinsHttpClient client = new JenkinsHttpClient()
-  client.postJson("http://10.243.180.253:12003/elapstimemeter_master/_doc/gitcommit_sha", JsonOutput.toJson(object)) 
+  client.postJson("http://10.243.180.253:12003/${env.JOB_NAME}/_doc/", JsonOutput.toJson(object)) 
   
 }
