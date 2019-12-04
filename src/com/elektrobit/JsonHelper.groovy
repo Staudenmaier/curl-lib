@@ -4,8 +4,8 @@ import groovy.json.JsonOutput
 class JsonHelper {
   private String path = ''
 
-  JsonHelper(String p) {
-    path = p
+  JsonHelper(String x) {
+    path = x
   }
 
   def createJSON(String filename) {
