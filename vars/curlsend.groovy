@@ -29,5 +29,7 @@ def call(String name = '/generatedFile.txt') {
   echo "-----------------26------------ "
   JenkinsHttpClient client = new JenkinsHttpClient()
   //client.postJson("http://10.243.180.253:12003/${env.JOB_NAME}/_doc/${env.GIT_COMMIT}", JsonOutput.toJson(json)) 
+  helper = null
+  client = null
   
 }
