@@ -20,15 +20,6 @@ def call(String name = 'klaus') {
         "Buildstatus": "success",
         "BuildDuration": 12345,
         "artifact_size": 90000,
-        "SpawnDocker": [{
-                        "Containtername": "Container A",
-                        "spawntime": 60
-                },
-                {
-                        "Containtername": "Container B",
-                        "spawntime": 6
-                }
-        ]
   ]
   //headers.'Authorization' = ""
   headers.'User-Agent' = 'Logstash'
