@@ -29,6 +29,14 @@ class JenkinsHttpClient {
         return resp.bodyText()
     }
 
+    def postJson(String url, String jsonbody) {
+        def resp = httpRequest.post(url)
+                .header("User-Agent", userAgent)
+                .contentType('application/json')
+                .body(jsonbody)
+                .send()
+        return resp.bodyText()
+    }
     /**
      * POST method, convert body Map to application/json.
      * @param url
