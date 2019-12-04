@@ -19,7 +19,7 @@ def call(String name = 'klaus') {
   
   def jsonSlurper = new JsonSlurper()
   def object = jsonSlurper.parseText('{ \
-                                        "BUILD_NUMBER": env.BUILD_NUMBER \
+                                        "BUILD_NUMBER": $env.BUILD_NUMBER \
                                         "Buildstatus": "success", \
                                         "BuildDuration": 12345, \
                                         "artifact_size": 90000, \
