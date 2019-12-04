@@ -4,9 +4,10 @@
 import static groovyx.net.http.ContentType.JSON
 import static groovyx.net.http.Method.POST
 import groovyx.net.http.HTTPBuilder
-import com.elektrobit.JenkinsHttpClient
+
 
 def call(String name = 'klaus') {
+  JenkinsHttpClient httpxxx;
   echo "Hello, ${name}."
   echo "-----------------------------"
   echo "${env.JOB_NAME}"
