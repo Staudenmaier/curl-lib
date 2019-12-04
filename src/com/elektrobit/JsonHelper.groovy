@@ -1,6 +1,7 @@
 package com.elektrobit
 import groovy.json.JsonOutput
  
+@NonCPS
 class JsonHelper {
   private String path = ''
 
