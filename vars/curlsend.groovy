@@ -14,15 +14,16 @@ def call(String name = 'klaus') {
   echo "-----------------------------"
   echo "${env.JOB_NAME}"
   echo "${env.GIT_COMMIT}"
+  echo "${env.$BUILD_STATUS}"
   echo "----------------------------- "
   
   def jsonSlurper = new JsonSlurper()
-  def object = jsonSlurper.parseText('{ 
-                                        "BUILD_NUMBER": env.BUILD_NUMBER
-                                        "Buildstatus": "success",
-                                        "BuildDuration": 12345,
-                                        "artifact_size": 90000,
-                                      }
+  def object = jsonSlurper.parseText('{ \
+                                        "BUILD_NUMBER": env.BUILD_NUMBER \
+                                        "Buildstatus": "success", \
+                                        "BuildDuration": 12345, \
+                                        "artifact_size": 90000, \
+                                      } \
                                      ')
                                    
 
