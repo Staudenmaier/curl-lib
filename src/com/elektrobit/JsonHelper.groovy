@@ -1,3 +1,4 @@
+package com.elektrobit
 import groovy.json.JsonOutput
  
 class JsonHelper {
