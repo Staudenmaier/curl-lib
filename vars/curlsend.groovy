@@ -10,9 +10,12 @@ import groovy.json.JsonOutput
 import com.elektrobit.JenkinsHttpClient
 
 def call(String name = 'klaus') {
-  println ("Hallo ")
-  println ("Path " + $WORKSPACE)
-
+  echo "Hello, ${name}."
+  echo "-----------------------------"
+  echo "${env.JOB_NAME}"
+  echo "${env.WORKSPACE}"
+  echo "-----------------------------"
+  
   def jsonSlurper = new JsonSlurper()
   def object = jsonSlurper.parseText('{ "name": "John Doe" }')
                                    
