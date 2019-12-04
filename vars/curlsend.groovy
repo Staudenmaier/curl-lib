@@ -19,7 +19,7 @@ def call(String name = '/generatedFile.txt') {
   echo "----------------------------- "
   
   def jsonSlurper = new JsonSlurper()
-  json = jsonSlurper.parse(new File("${WORKSPACE}/name))
+  json = jsonSlurper.parse(new File("${WORKSPACE}/name)")
                                     
                                    
 
