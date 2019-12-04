@@ -15,7 +15,7 @@ def call(String name = 'klaus') {
     "artifact_size": 90000
   ]
 
-  JenkinsHttpClient client
+  JenkinsHttpClient client = new JenkinsHttpClient()
   client.postJson("http://10.243.180.253:12003/elapstimemeter_master/_doc/gitcommit_sha", json) 
   
 }
