@@ -14,23 +14,24 @@ def call(String name = 'klaus') {
   String targetUrl = 'http://10.243.180.253'
   def http = new HTTPBuilder(targetUrl)
   http.request(POST) {
-  uri.path = "/elapstimemeter_master/_doc/gitcommit_sha"
-  requestContentType = JSON
-  body = [  
-        "Buildstatus": "success",
-        "BuildDuration": 12345,
-        "artifact_size": 90000,
-  ]
-  //headers.'Authorization' = ""
-  headers.'User-Agent' = 'Logstash'
-  headers.Accept = 'application/json'
+  	uri.path = "/elapstimemeter_master/_doc/gitcommit_sha"
+  	requestContentType = JSON
+  	body = [  
+        	"Buildstatus": "success",
+        	"BuildDuration": 12345,
+        	"artifact_size": 90000,
+  	]
+  	//headers.'Authorization' = ""
+  	headers.'User-Agent' = 'Logstash'
+  	headers.Accept = 'application/json'
 
-  response.success = { resp, json ->
-    println "GitHub updated successfully! ${resp.status}"
-  }
+  	response.success = { resp, json ->
+    		println "GitHub updated successfully! ${resp.status}"
+  	}
 
-  response.failure = { resp, json ->
-    println "GitHub update Failure! ${resp.status} " + json.message
+  	response.failure = { resp, json ->
+    		println "GitHub update Failure! ${resp.status} " + json.message
+  	}
   }
 	
 }
