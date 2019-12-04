@@ -10,13 +10,16 @@ class JsonHelper {
   }
 
   def createJSON(String filename) {
+    def listmap = [
+     ["Containtername": "Container A", "spawntime": 60],
+     ["Containtername": "Container b", "spawntime": 99]
+    ]
 
     def data = [
-      name: "Foo Bar",
-      year: "2018",
-      timestamp: "2018-03-08T00:00:00",
-      tags: [ "person", "employee"],
-      grade: 3.14
+        "Buildstatus": "success",
+        "BuildDuration": 12345,
+        "artifact_size": 90000,
+        "SpawnDocker": listmap
     ]
  
     def json_str = JsonOutput.toJson(data)
