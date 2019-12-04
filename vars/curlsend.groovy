@@ -8,6 +8,7 @@ import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 
 import com.elektrobit.JenkinsHttpClient
+import com.elektrobit.JsonHelper
 
 def call(String name = '/generatedFile.txt') {
   echo "http://10.243.180.253:12003/${env.JOB_NAME}/_doc/${env.GIT_COMMIT}"
@@ -15,11 +16,14 @@ def call(String name = '/generatedFile.txt') {
   echo "${env.JOB_NAME}"
   echo "${env.GIT_COMMIT}"
   echo "${env.$BUILD_STATUS}"
-  echo "${WORKSPACE}/name"
+  echo "${env.WORKSPACE}/name"
   echo "----------------------------- "
   
+  JsonHelper helper = new JsonHelper(${env.WORKSPACE})
+  helper.createJSON(name)
+    
   def jsonSlurper = new JsonSlurper()
-  json = jsonSlurper.parse(new File("${WORKSPACE}/${name}"))
+  json = jsonSlurper.parse(new File("${env.WORKSPACE}/${name}"))
                            
   JenkinsHttpClient client = new JenkinsHttpClient()
   client.postJson("http://10.243.180.253:12003/${env.JOB_NAME}/_doc/${env.GIT_COMMIT}", JsonOutput.toJson(json)) 
