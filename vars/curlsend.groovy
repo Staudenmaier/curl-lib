@@ -21,12 +21,25 @@ def call(String name = '/generatedFile.txt') {
   
   JsonHelper helper = new JsonHelper(env.WORKSPACE)
   helper.createJSON(name)
+  
+  def listmap = [
+    ["Containtername": "Container A", "spawntime": 60],
+    ["Containtername": "Container b", "spawntime": 99]
+  ]
+
+  def data = [
+    "Buildstatus": "success",
+    "BuildDuration": 12345,
+    "artifact_size": 90000,
+    "SpawnDocker": listmap
+  ]
+  
     
   echo "----------------25------------- "
   def jsonSlurper = new JsonSlurper()
   
   def json = jsonSlurper.parse(new File("${env.WORKSPACE}/${name}"))
-  json.put("KLST", "\"${env.JOB_NAME}\"")
+  json.put(data)
                           
   echo "-----------------26------------ " + json
   JenkinsHttpClient client = new JenkinsHttpClient()
