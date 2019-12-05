@@ -16,9 +16,6 @@ class JsonHelper {
     ]
 
     def data = [
-        "Buildstatus": "success",
-        "BuildDuration": 12345,
-        "artifact_size": 90000,
         "SpawnDocker": listmap
     ]
  
