@@ -24,7 +24,9 @@ def call(String name = '/generatedFile.txt') {
     
   echo "----------------25------------- "
   def jsonSlurper = new JsonSlurper()
-  def json = JsonOutput.toJson(jsonSlurper.parse(new File("${env.WORKSPACE}/${name}")))
+  
+  def json = jsonSlurper.parse(new File("${env.WORKSPACE}/${name}"))
+  json.put("KLST", "\"${env.JOB_NAME}\"")
                           
   echo "-----------------26------------ " + json
   JenkinsHttpClient client = new JenkinsHttpClient()
