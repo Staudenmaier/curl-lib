@@ -26,10 +26,10 @@ class JsonHelper {
     def json_beauty = JsonOutput.prettyPrint(json_str)
     File file = new File(path+"/"+filename)
     file.write(json_beauty)
-    echo "****"
-    echo json_beauty
-    echo "****"
-    echo json_str
+    println "****"
+    println json_beauty
+    println "****"
+    println json_str
    
    
    
