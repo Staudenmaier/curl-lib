@@ -38,10 +38,9 @@ def call(String name = '/generatedFile.txt') {
   echo "----------------25------------- "
   def jsonSlurper = new JsonSlurper()
   
-  def json = jsonSlurper.parse(new File("${env.WORKSPACE}/${name}"))
-  json.put(data)
-                          
-  echo "-----------------26------------ " + json
+  json << jsonSlurper.parse(new File("${env.WORKSPACE}/${name}"))
+                                
+  echo "-----------------26------------ " + JsonOutput.toJson(json)
   JenkinsHttpClient client = new JenkinsHttpClient()
   //client.postJson("http://10.243.180.253:12003/${env.JOB_NAME}/_doc/${env.GIT_COMMIT}", JsonOutput.toJson(json)) 
 
