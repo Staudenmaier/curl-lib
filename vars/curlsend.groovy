@@ -32,7 +32,7 @@ def call(String name = '/generatedFile.txt') {
   ]
 
   def data = [
-    "@timestamp" :  "${currentBuild.startTimeInMillis}",
+    "@timestamp" :  "2018-07-31T20:52:29.452Z",
     "Buildstatus": "success",
     "GitCommit SHA": "${env.GIT_COMMIT}",
     "BuildDuration": 12345,
