@@ -12,7 +12,7 @@ import com.elektrobit.JsonHelper
 
 def call(String name = '/generatedFile.txt') {
   echo "-----------------------------"
-  def index = env.JOB_NAME.replace("/",":")
+  def index = env.JOB_NAME.replace("/","_")
   echo "Elastic url:          ${env.ELASTIC_URL}"
   echo "Elastic port:         ${env.ELASTIC_PORT}"
   echo "Elastic index:        ${index}"
