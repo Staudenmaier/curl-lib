@@ -44,5 +44,5 @@ def call(String name = '/generatedFile.txt') {
   data << jsonSlurper.parse(new File("${env.WORKSPACE}/${name}"))
 
   JenkinsHttpClient client = new JenkinsHttpClient()
-  client.postJson("${env.ELASTIC_URL}:${env.ELASTIC_PORT}/${index}/_doc/${env.BUILD_NUMBER}", JsonOutput.toJson(data)) 
+  echo client.postJson("${env.ELASTIC_URL}:${env.ELASTIC_PORT}/${index}/_doc/${env.BUILD_NUMBER}", JsonOutput.toJson(data)) 
 }
