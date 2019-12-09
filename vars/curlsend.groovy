@@ -17,8 +17,8 @@ def call(String name = '/generatedFile.txt') {
   echo "Elastic port:         ${env.ELASTIC_PORT}"
   echo "Elastic index:        ${index}"
   echo "Logstash ID:          ${env.GIT_COMMIT}"
-  echo "Jenkins build status: ${env.$BUILD_STATUS}"
-  echo "Jenkins build number: ${env.$BUILD_NUMBER}"
+  echo "Jenkins build status: ${env.BUILD_STATUS}"
+  echo "Jenkins build number: ${env.BUILD_NUMBER}"
   echo "Filepath:             ${env.WORKSPACE}/${name}"
   echo "${env.ELASTIC_URL}:${env.ELASTIC_PORT}/${index}/_doc/${env.GIT_COMMIT}"
   echo "----------------------------- "
@@ -44,5 +44,5 @@ def call(String name = '/generatedFile.txt') {
   data << jsonSlurper.parse(new File("${env.WORKSPACE}/${name}"))
 
   JenkinsHttpClient client = new JenkinsHttpClient()
-  client.postJson("${env.ELASTIC_URL}:${env.ELASTIC_PORT}/${index}/_doc/${env.$BUILD_NUMBER}", JsonOutput.toJson(data)) 
+  client.postJson("${env.ELASTIC_URL}:${env.ELASTIC_PORT}/${index}/_doc/${env.BUILD_NUMBER}", JsonOutput.toJson(data)) 
 }
