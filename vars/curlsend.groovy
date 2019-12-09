@@ -12,13 +12,14 @@ import com.elektrobit.JsonHelper
 
 def call(String name = '/generatedFile.txt') {
   echo "-----------------------------"
+  dev index = env.JOB_NAME.replace("/",":")"
   echo "Elastic url:          ${env.ELASTIC_URL}"
   echo "Elastic port:         ${env.ELASTIC_PORT}"
-  echo "Elastic index:        ${env.ELASTIC_INDEX}"
+  echo "Elastic index:        ${index}"
   echo "Logstash ID:          ${env.GIT_COMMIT}"
   echo "Jenkins build status: ${env.$BUILD_STATUS}"
-  echo "fILEpATH:             ${env.WORKSPACE}/${name}"
-  echo "${env.ELASTIC_URL}:${env.ELASTIC_PORT}/${env.JOB_NAME}/_doc/${env.GIT_COMMIT}"
+  echo "Filepath:             ${env.WORKSPACE}/${name}"
+  echo "${env.ELASTIC_URL}:${env.ELASTIC_PORT}/${index}/_doc/${env.GIT_COMMIT}"
   echo "----------------------------- "
   
   JsonHelper helper = new JsonHelper(env.WORKSPACE)
