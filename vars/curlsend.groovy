@@ -20,7 +20,7 @@ def call(String name = '/generatedFile.txt') {
   echo "Jenkins build status: ${env.BUILD_STATUS}"
   echo "Jenkins build number: ${env.BUILD_NUMBER}"
   echo "Filepath:             ${env.WORKSPACE}/${name}"
-  echo "${env.ELASTIC_URL}:${env.ELASTIC_PORT}/${index}/_doc/${env.GIT_COMMIT}"
+  echo "${env.ELASTIC_URL}:${env.ELASTIC_PORT}/${index}/_doc/${env.BUILD_NUMBER}"
   echo "----------------------------- "
   
   JsonHelper helper = new JsonHelper(env.WORKSPACE)
