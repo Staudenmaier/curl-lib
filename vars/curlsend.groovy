@@ -11,12 +11,14 @@ import com.elektrobit.JenkinsHttpClient
 import com.elektrobit.JsonHelper
 
 def call(String name = '/generatedFile.txt') {
-  echo "http://10.243.180.253:12003/${env.JOB_NAME}/_doc/${env.GIT_COMMIT}"
   echo "-----------------------------"
-  echo "${env.JOB_NAME}"
-  echo "${env.GIT_COMMIT}"
-  echo "${env.$BUILD_STATUS}"
-  echo "${env.WORKSPACE}/name"
+  echo "Elastic url:          ${env.ELASTIC_URL}"
+  echo "Elastic port:         ${env.ELASTIC_PORT}"
+  echo "Elastic index:        ${env.ELASTIC_INDEX}"
+  echo "Logstash ID:          ${env.GIT_COMMIT}"
+  echo "Jenkins build status: ${env.$BUILD_STATUS}"
+  echo "fILEpATH:             ${env.WORKSPACE}/${name}"
+  echo "${env.ELASTIC_URL}:${env.ELASTIC_PORT}/${env.JOB_NAME}/_doc/${env.GIT_COMMIT}"
   echo "----------------------------- "
   
   JsonHelper helper = new JsonHelper(env.WORKSPACE)
@@ -34,13 +36,10 @@ def call(String name = '/generatedFile.txt') {
     "SpawnDocker": listmap
   ]
   
-    
-  echo "----------------25------------- "
   def jsonSlurper = new JsonSlurper()
   
   data << jsonSlurper.parse(new File("${env.WORKSPACE}/${name}"))
-                                
-  echo "-----------------26------------ " + JsonOutput.toJson(data)
+
   JenkinsHttpClient client = new JenkinsHttpClient()
   //client.postJson("http://10.243.180.253:12003/${env.JOB_NAME}/_doc/${env.GIT_COMMIT}", JsonOutput.toJson(data)) 
 
