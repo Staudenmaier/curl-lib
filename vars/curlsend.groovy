@@ -13,7 +13,8 @@ import com.elektrobit.JsonHelper
 def call(String name = '/generatedFile.txt') {
   echo "-----------------------------"
   def index = env.JOB_NAME.replace("/","-").toLowerCase()
-  def timestamp = ${new Date().format("YYYY-MM-dd-hh'T'mm:ss.SSS'Z'")}
+  def timestamp = new Date().format("YYYY-MM-dd-hh'T'mm:ss.SSS'Z'")
+  
   echo "Elastic url:          ${env.ELASTIC_URL}"
   echo "Elastic port:         ${env.ELASTIC_PORT}"
   echo "Elastic index:        ${index}"
