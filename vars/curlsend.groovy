@@ -13,13 +13,13 @@ import com.elektrobit.JsonHelper
 def call(String name = '/generatedFile.txt') {
   echo "-----------------------------"
   def index = env.JOB_NAME.replace("/","-").toLowerCase()
+  def timestamp = ${new Date().format("YYYY-MM-dd-hh'T'mm:ss.SSS'Z'")}
   echo "Elastic url:          ${env.ELASTIC_URL}"
   echo "Elastic port:         ${env.ELASTIC_PORT}"
   echo "Elastic index:        ${index}"
   echo "Logstash ID:          ${env.GIT_COMMIT}"
   echo "Jenkins build status: ${env.BUILD_STATUS}"
-  echo "Jenkins build status: ${env.currentBuild.result}"
-  echo "Jenkins buildTime:    ${env.currentBuild.startTimeInMillis}"
+  echo "Jenkins buildTime:    "+timestamp
   echo "Jenkins build number: ${env.BUILD_NUMBER}"
   echo "Filepath:             ${env.WORKSPACE}/${name}"
   echo "${env.ELASTIC_URL}:${env.ELASTIC_PORT}/${index}/_doc/${env.BUILD_NUMBER}"
@@ -34,8 +34,8 @@ def call(String name = '/generatedFile.txt') {
   ]
  
   def data = [
-    "@timestamp" :  "2018-07-31T20:52:29.452Z",
-    "Buildstatus": "success",
+    "@timestamp" :  "${timestamp}",
+    "Buildstatus":  "success",
     "GitCommit SHA": "${env.GIT_COMMIT}",
     "BuildDuration": 12345,
     "artifact_size": 90000,
