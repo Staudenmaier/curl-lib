@@ -34,13 +34,15 @@ def call(String name = '/generatedFile.txt') {
     ["Containtername": "Container b", "spawntime": 99]
   ]
  
+ Random rand = new Random()
+
   def data = [
     "@timestamp" :  "${timestamp}",
     "Buildstatus":  "success",
     "GitCommit SHA": "${env.GIT_COMMIT}",
-    "BuildDuration": 12345,
-    "artifact_size": 90000,
-    "SpawnDocker": listmap
+    "BuildDuration": rand.nextInt(1000),
+    "ARTIFACT_SIZE": rand.nextInt(10000),
+    "SPAWN_DOCKER": listmap
   ]
   
   def jsonSlurper = new JsonSlurper()
