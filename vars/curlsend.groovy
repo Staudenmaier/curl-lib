@@ -32,7 +32,7 @@ def call(String name = '/generatedFile.txt') {
     ["Containtername": "Container A", "spawntime": 60],
     ["Containtername": "Container b", "spawntime": 99]
   ]
-
+ 
   def data = [
     "@timestamp" :  "2018-07-31T20:52:29.452Z",
     "Buildstatus": "success",
